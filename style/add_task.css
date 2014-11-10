@@ -1,0 +1,48 @@
+*
+{
+    font-family: Calibri;
+}
+.add_task{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    float: right;
+    width: 300px;
+    max-width: 20%;
+    position: fixed;
+    overflow: hidden;
+    
+    top: 50px;
+    right: 0px;
+    background-color: #90A4AE;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */;
+
+
+}
+
+.add_task input,.add_task textarea,.add_task select,.add_task button{
+    border: none;
+}
+.add_new_problem,.add_new_status{
+    background-color: #5fa5ae;
+    padding: 5%;
+    border: 1px solid #ffffff;
+    font-size:1.1em;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */;
+    margin-bottom: 20px;
+}
+.add_new_problem >input ,.add_new_problem >textarea,.add_new_problem >select,.add_new_problem >button{
+    display: block;
+    width: 80%;
+    padding: 0 5%;
+    font-size:1.1em;
+    resize: none;
+    text-align: center;
+    background-color: RGBA(0,0,0,0.4);
+    border-radius: 5px;
+    margin: 6px auto;
+    color: #ffffff;
+}
+h3{
+    color: #ffffff;
+    text-align: center;
+}

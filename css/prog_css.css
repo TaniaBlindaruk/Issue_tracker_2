@@ -1,0 +1,103 @@
+﻿div.progress {
+  margin: 50px;
+  padding: 0;
+  width: 540px;
+  height: 20px;
+  background-color: #eef;
+  border: 2px solid black;
+}
+
+div.progressIndicator {
+  margin: 0;
+  padding: 0;
+  background-color: #fbcb46;
+  position: relative;
+  top: 0;
+  left: 0px;
+
+  width: 10%;
+  height: 100%;
+}
+  
+div.progressVal  {
+  position: relative;
+  top: -18px;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.hidden {
+  position: absolute !important;
+  top: -20em;
+  left: -200em;
+}
+
+.focus {
+  background-color: #eee !important;
+}
+
+
+
+.data_refreshing_overlay{
+
+position: fixed!important;
+top: 0px;
+left: 0px;
+min-height:680px;
+bottom:0px;
+z-index: 20;
+width: 100%;
+background-color: rgba(0,0,0,0.7);
+}
+
+.data_refreshing_overlay .spinner{
+position: absolute;
+top: 50%;
+left: 50%;
+z-index: 1;}
+
+@-webkit-keyframes mymove{
+    0% {opacity: 0;}
+}
+@-webkit-keyframes mymove1 {
+    10% {opacity: 0;}
+}
+@-webkit-keyframes mymove2 {
+    20% {opacity: 0;}
+}
+@-webkit-keyframes mymove3 {
+    30% {opacity: 0;}
+}
+@-webkit-keyframes mymove4 {
+    40% {opacity: 0;}
+}
+@-webkit-keyframes mymove5 {
+    50% {opacity: 0;}
+}
+@-webkit-keyframes mymove6 {
+    60% {opacity: 0;}
+}
+
+@-webkit-keyframes mymove7 {
+    70% {opacity: 0;}
+}
+@-webkit-keyframes mymove8 {
+    80% {opacity: 0;}
+}
+@-webkit-keyframes mymove9 {
+    90% {opacity: 0;}
+}
+
+.bar-circle{position: absolute;
+ width: 25px;
+ height: 7px; 
+box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px;
+transform-origin: left 50% 0px; 
+ border-top-left-radius: 6px;
+  border-top-right-radius: 6px; 
+border-bottom-right-radius: 6px; 
+border-bottom-left-radius: 6px;
+ background-color: rgb(255, 255, 255);}

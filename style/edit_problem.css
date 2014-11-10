@@ -1,0 +1,12 @@
+.edit_problem>*{
+    display: block;
+    width: 70%;
+    background-color: RGBA(0,0,0,0.5);
+    margin: 4px auto;
+    border: none;
+    font-size:1.1em;
+    border-radius: 5px;
+    resize: none;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */;
+}
