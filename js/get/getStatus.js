@@ -20,7 +20,7 @@ function getStatus(self) {
                 var mappedTasks = [];
                 for (var i = 0; i < response.results.length; i++) {
                     var a = response.results[i];
-                    mappedTasks.push(new Status(a.active_tasks, a.name_status));
+                    mappedTasks.push(new Status(a.active_tasks, a.name_status, a.objectId));
                 }
                 console.log(mappedTasks);
 

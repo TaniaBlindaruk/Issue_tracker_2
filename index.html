@@ -18,6 +18,7 @@
     <link href="style/global.css" rel="stylesheet" type="text/css"/>
     <link href="style/center_tasks.css" rel="stylesheet" type="text/css"/>
     <link href="style/edit_problem.css" rel="stylesheet" type="text/css"/>
+    <link href="style/deleted_type_task.css" rel="stylesheet" type="text/css"/>
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,600" rel="stylesheet" type="text/css"/>
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
@@ -90,7 +91,7 @@
         <div id="contentRight">
 
             <div class="header">
-                
+                <button data-bind="click: delete_tasks">Deleted type task</button>
             </div>
             <div class="center_tasks">
             <ul data-bind="foreach: return_task_some_status_tasks()" class="task">

@@ -10,14 +10,15 @@
     self.createdAt = ko.observable();
     self.updatedAt = ko.observable();
 }
-function Status(active_tasks, name_status) {
+function Status(active_tasks, name_status,id) {
     self = this;
+    self.id = id;
     self.active_tasks = active_tasks;
     self.name_status = name_status;
 }
-function Tasks(tasks) {
+function Tasks(tasks,id) {
     this.tasks = tasks;
-
+    self.id = id;
 }
 
 function AppViewModel() {
@@ -61,7 +62,7 @@ function AppViewModel() {
         if (self.tasks() != 0) {
 
             saveType(new Tasks(self.tasks()), this);
-            saveStatus(new Status(self.tasks(), "Not Started"), this);
+            saveStatus(new Status(self.tasks(), "Not Started",1), this);
             self.tasks("");
 
         }
@@ -93,7 +94,7 @@ function AppViewModel() {
 
             }
         }
-        saveStatus(new Status(self.active_tasks(), self.name_status()), this);
+        saveStatus(new Status(self.active_tasks(), self.name_status(),1), this);
         self.name_status("");
     }
     /*повертає вибірку статусів активного таску*/
@@ -138,6 +139,7 @@ function AppViewModel() {
     });
     /* видаляє задачу*/
     self.remove_task = function (seat) {
+        debugger;
         deleteTaskById(seat.id());
         self.arrayTask.remove(seat);
 
@@ -153,26 +155,28 @@ function AppViewModel() {
     /*видаляє тип задачу, параленьно з цим проходить по масиву статусів і видаляє всі статуси які були привязані до цього тпу задач
     * і видаляє задачі які були привязані до цього типу задач*/
     self.delete_tasks = function () {
-        debugger;
-        for (var i = 0; i < self.arrayStatus().length; ++i) {
-            if (self.arrayStatus()[i].active_tasks == self.active_tasks()) {
-                debugger;
-                deleteStatusById(self.arrayStatus()[i].id());
-                self.arrayStatus.remove(self.arrayStatus()[i]);
-                --i;
-            }
-        }
+
         for (var i = 0; i < self.arrayTask().length; ++i) {
+            debugger;
             if (self.arrayTask()[i].active_tasks() == self.active_tasks()) {
                 deleteTaskById(self.arrayTask()[i].id());
                 self.arrayTask.remove(self.arrayTask()[i]);
                 --i;
             }
         }
+        debugger;
+        for (var i = 0; i < self.arrayStatus().length; ++i) {
+            if (self.arrayStatus()[i].active_tasks == self.active_tasks()) {
+                deleteStatusById(self.arrayStatus()[i].id);
+                self.arrayStatus.remove(self.arrayStatus()[i]);
+                --i;
+            }
+        }
+        debugger;
         for (var i = 0; i < self.arraTask().length; ++i) {
             if (self.arraTask()[i].tasks == self.active_tasks()) {
-                deleteTypeById(self.arraTask()[i].id());
-                self.arrayTask.remove(self.arraTask()[i]);
+                deleteTypeById(self.arraTask()[i].id);
+                self.arraTask.remove(self.arraTask()[i]);
                 break;
             }
         }
