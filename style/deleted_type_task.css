@@ -1,4 +1,10 @@
-.header> button{
+.deleted_type{
+    position: absolute;
+    margin-top: 10px;
+    font-size: 1.2em;
+    border-radius: 3px;
     background-color: green;
-    margin-left: 300px;
+    color: #ffffff;
+    right: 10px;
+
 }

@@ -1,32 +1,31 @@
-*
-{
-    font-family: Calibri;
-}
+
 .add_task{
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
     float: right;
-    width: 300px;
-    max-width: 20%;
+    width: 320px;
+    max-width: 25%;
     position: fixed;
     overflow: hidden;
     
-    top: 50px;
+    top: 55px;
     right: 0px;
-    background-color: #90A4AE;
+    background-color: rgba(200,200,200,0.7);
     box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */;
 
 
 }
 
 .add_task input,.add_task textarea,.add_task select,.add_task button{
-    border: none;
+    
+    margin:5px auto;
+    padding:10px;border: none;
 }
 .add_new_problem,.add_new_status{
-    background-color: #5fa5ae;
+    background-color: rgba(150,150,150,0.6);
     padding: 5%;
     border: 1px solid #ffffff;
-    font-size:1.1em;
+  font-size:1.1em;
     box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */;
     margin-bottom: 20px;
 }
@@ -34,8 +33,9 @@
     display: block;
     width: 80%;
     padding: 0 5%;
-    font-size:1.1em;
     resize: none;
+    margin:5px auto;
+    padding:10px;
     text-align: center;
     background-color: RGBA(0,0,0,0.4);
     border-radius: 5px;
@@ -45,4 +45,14 @@
 h3{
     color: #ffffff;
     text-align: center;
+}
+.button_add
+{
+    position:fixed;
+    top:60px;
+    right:0;
+    height:50px;
+    width:50px;
+    background-color:rgba(150,150,150,0.7);
+    border: 1px solid #ffffff;
 }

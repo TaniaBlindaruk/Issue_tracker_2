@@ -1,20 +1,52 @@
-﻿.table
+﻿.center_tasks>div{
+    display: table;
+    overflow: auto;
+    border-collapse : separate;
+    border-spacing : 5px;
+    margin-left: 40px;
+    padding-right: 350px;
+
+
+    align-items: flex-start;
+
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    position: absolute;
+    top: 60;
+    right: 300;
+    bottom: 4;
+    left: 300;
+}
+.table h2{
+    text-align: center;
+}
+
+.table
 {
     border: 3px solid #47598F;
     background-color: #D7D7D7;
-    width: 500px;
-    min-height: 300px;
-    float: left;
-    margin: 5px;
+    width: 300px;
+
+    min-width: 300px;
     border-radius: 5px;
     font-size:1em;
-    
-}
+    display: table-cell;
+    top: 0;
 
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 260px;
+    margin: 0 5px;
+    padding: 4px 3px 3px;
+    position: relative;
+}
 .header
 {
     width:1130px;
-    margin:0px 0px 0px 250px;
+    margin:0px 0px 0px 0px;
     float:left;
     height:50px;
     background:#000;

@@ -18,17 +18,19 @@ h1
 #contentLeft
 {
     z-index: 10;
-    width: 250px;
+    width: 200px;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #283c51;
+    background-color: #4f5a6e;
+    /*#283c51;*/
     overflow-y: auto;
     max-width: 20%;
 }
 
 #contentRight {
+   
 /* height: 100%;
     width: 100%;
     overflow: hidden;*/
@@ -42,7 +44,7 @@ h1
 
     #leftNavigation:first-child
     {
-        border-top: solid 1px #395673;
+        border-top: 1px solid #1ba8ed;
     }
 
     #leftNavigation, #leftNavigation li ul
@@ -53,11 +55,11 @@ h1
 
         #leftNavigation li a
         {
-            font-size: 1.1rem;
+         
             display: block;
             padding: 0.8rem 0.5rem 0.8rem 3rem;
-            color: #adadad;
-            border-bottom: solid 1px #395673;
+            color: #cfcfcf;
+            border-bottom:1px solid #1ba8ed;
             text-overflow: ellipsis;
             overflow: hidden;
             position: relative;
@@ -107,5 +109,5 @@ h1
 
         #leftNavigation > li.active
         {
-            background-color: #427c97;
+            background-color: #649fa9;
         }

@@ -3,26 +3,27 @@
 <head>
     <title></title>
      <script src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
-    <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
-    <link href="css/menu.css" rel="stylesheet" type="text/css"/>
+   <!-- <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>-->
+    <script src="../js/jquery-2.1.1.js"></script>
+    <link href="../css/menu.css" rel="stylesheet" type="text/css"/>
     <!--   <link href='menu.css' rel='stylesheet' type='text/css'>-->
     <!--<link href='css/lib.css' rel='stylesheet' type='text/css'/>
-    <link href='css/task.css' rel='stylesheet' type='text/css'/>
-    <link href='css/table.css' rel='stylesheet' type='text/css'/>-->
-    <link href='css/prog_css.css' rel='stylesheet' type='text/css'/>
-    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
-    <link href="style/add_type_task.css" rel="stylesheet" type="text/css"/>
-    <link href="style/header.css" rel="stylesheet" type="text/css"/>
-    <link href="style/add_task.css" rel="stylesheet" type="text/css"/>
-    <link href="style/add_status.css" rel="stylesheet" type="text/css"/>
-    <link href="style/global.css" rel="stylesheet" type="text/css"/>
-    <link href="style/center_tasks.css" rel="stylesheet" type="text/css"/>
-    <link href="style/edit_problem.css" rel="stylesheet" type="text/css"/>
-    <link href="style/deleted_type_task.css" rel="stylesheet" type="text/css"/>
+    <link href='css/task.css' rel='stylesheet' type='text/css'/>-->
+    <link href='../css/table.css' rel='stylesheet' type='text/css'/>
+    <link href='../css/prog_css.css' rel='stylesheet' type='text/css'/>
+    <link href="menu.css" rel="stylesheet" type="text/css"/>
+    <link href="add_type_task.css" rel="stylesheet" type="text/css"/>
+    <link href="header.css" rel="stylesheet" type="text/css"/>
+    <link href="add_task.css" rel="stylesheet" type="text/css"/>
+    <link href="add_status.css" rel="stylesheet" type="text/css"/>
+    <link href="global.css" rel="stylesheet" type="text/css"/>
+    <link href="center_tasks.css" rel="stylesheet" type="text/css"/>
+    <link href="edit_problem.css" rel="stylesheet" type="text/css"/>
+    <link href="deleted_type_task.css" rel="stylesheet" type="text/css"/>
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,600" rel="stylesheet" type="text/css"/>
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
-     <script type="text/javascript" src="js/ViewModel/click_events.js"></script>
+     <script type="text/javascript" src="../js/ViewModel/click_events.js"></script>
    
     
     
@@ -73,6 +74,8 @@
           </div>
       </div>
     </div>
+    <div class="button_add"></div>
+    <!--<img class="background" style="overflow:hidden;"src="http://westyle.ru/uploads/posts/2010-02/1265320839_chalks-suite-1-0-152876194.jpg"/>-->
     <div id="contentWrapper">
 
         <div id="contentLeft">
@@ -87,16 +90,26 @@
                 <a data-bind="text: tasks, click: $root.print_task " href="#"></a>
             </li>
         </ul>
+         <!--   <div class="about" data-bind="foreach: return_status_task()">
+                <div data-bind="text: $root.same_task($data.name_status) "></div>
+            </div>-->
     </div>
         <div id="contentRight">
 
             <div class="header">
-                <button data-bind="click: delete_tasks">Deleted type task</button>
+                <!--<button id="hide"></button>-->
+                <button data-bind="if: boolTypeTasks , click: delete_tasks" class="deleted_type">Deleted active type task</button>
             </div>
             <div class="center_tasks">
-            <ul data-bind="foreach: return_task_some_status_tasks()" class="task">
-                <li>
-                    <div  class="problem" data-bind="if: boolTask()">
+          <div  data-bind="foreach: return_status_task()">
+              <div class="table">
+                <h2 data-bind="text: $data.name_status"></h2>
+                  <a href="#" style="color: red; position: absolute; top: 2px; right: 3px;"
+                        data-bind="click: $root.delete_status">X
+                  </a>
+                <div data-bind="foreach: $root.same_task($data.name_status) " >
+                    
+                   <div  class="problem" data-bind="if: boolTask()">
                        <div>Title: <h3 data-bind="text: task_title"></h3></div> 
                         <div>Description:
                             <span data-bind="text: task_description"></span>
@@ -114,24 +127,29 @@
                         <div>
                            <strong>Updated at: </strong> <span data-bind="text: updatedAt"></span>
                         </div>
-                        <button data-bind="click: $root.edit_task" type="button">Edit</button>
+                        <button data-bind="enable: !$data.trueEdit, click: $root.edit_task" type="button">Edit</button>
                         
                     </div>
                     <div class="edit_problem" data-bind="ifnot: boolTask">
                         <input type="text" data-bind="value: task_title"/>
                         <textarea style="height: 120px" data-bind="value: task_description"></textarea>
                         <input type="text" data-bind="value: task_estimation"/>
-                        <select class="edit_selected_status" data-bind="foreach: $root.return_status_task(), value: task_status">
+                        <select class="edit_selected_status" data-bind="foreach: $root.return_status_task(), value: $data.last_status">
                             <option data-bind="text: name_status "></option>
                         </select>
-                        <button data-bind="click: $root.edit_task" type="button">Save</button>
+                        <button data-bind="click: $root.save_task" type="button">Save</button>
                     </div>
-                </li>
-            </ul>
+                   </div>
+               </div>
+            </div>
+            </div>
+            </div>
         </div>
-              <div data-bind="if: boolTypeTasks" class="add_task">
+              <div  class="add_task" data-bind="if: boolTypeTasks">
             <div class="add_new_problem">
                 <h3>Add some task</h3>
+                <p id="size"></p>
+         
                 <input data-bind="value: task_title" type="text" placeholder="Title Task"/>
                 <textarea data-bind="value: task_description" placeholder="Description"></textarea>
                 <input data-bind="value: task_estimation" type="text" placeholder="Esti"/>
@@ -151,22 +169,22 @@
         </div>
         
 
-        <script type="text/javascript" src="js/update/updateTask.js"></script>
-    <script type="text/javascript" src="js/get/getTask.js"></script>
-    <script type="text/javascript" src="js/get/getType.js"></script>
-    <script type="text/javascript" src="js/get/getStatus.js"></script>
-    <script type="text/javascript" src="js/set/saveTask.js"></script>
-    <script type="text/javascript" src="js/set/saveType.js"></script>
-    <script type="text/javascript" src="js/set/saveStatus.js"></script>
-     <script type="text/javascript" src="js/delete/deleteTask.js"></script>
-    <script type="text/javascript" src="js/delete/deleteType.js"></script>
-    <script type="text/javascript" src="js/delete/deleteStatus.js"></script>
-    <script type="text/javascript" src="js/11.js"></script>
-    <script type="text/javascript" src="js/11.js"></script>
-    <script type="text/javascript" src="js/view_model.js"></script>
-    <script type="text/javascript" src="js/getTask.js"></script>
+        <script type="text/javascript" src="../js/update/updateTask.js"></script>
+    <script type="text/javascript" src="../js/get/getTask.js"></script>
+    <script type="text/javascript" src="../js/get/getType.js"></script>
+    <script type="text/javascript" src="../js/get/getStatus.js"></script>
+    <script type="text/javascript" src="../js/set/saveTask.js"></script>
+    <script type="text/javascript" src="../js/set/saveType.js"></script>
+    <script type="text/javascript" src="../js/set/saveStatus.js"></script>
+     <script type="text/javascript" src="../js/delete/deleteTask.js"></script>
+    <script type="text/javascript" src="../js/delete/deleteType.js"></script>
+    <script type="text/javascript" src="../js/delete/deleteStatus.js"></script>
+    <script type="text/javascript" src="../js/11.js"></script>
+    <script type="text/javascript" src="../js/11.js"></script>
+    <script type="text/javascript" src="../js/view_model.js"></script>
+    <script type="text/javascript" src="../js/getTask.js"></script>
     
-    <script type="text/javascript" src="js/menu_js/jquery.ssd-vertical-navigation.js"></script>
-    <script type="text/javascript" src="js/menu_js/app.js"></script>
+    <script type="text/javascript" src="../js/menu_js/jquery.ssd-vertical-navigation.js"></script>
+    <script type="text/javascript" src="../js/menu_js/app.js"></script>
 </body>
 </html>

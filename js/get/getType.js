@@ -12,9 +12,9 @@
         success: function (response) {
             $(".data_refreshing_overlay").css('display', 'none');
             $("div .spinner").css('display', 'none');
-        
+
             if (response && response.results && response.results.length) {
-           
+
 
                 var mappedTasks = [];
                 for (var i = 0; i < response.results.length; i++) {
@@ -34,7 +34,7 @@
         error: function () {
             $(".data_refreshing_overlay").css('display', 'none');
             $("div .spinner").css('display', 'none');
-          
+
         }
     };
     $.ajax(options);

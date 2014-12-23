@@ -2,14 +2,13 @@ body{
     margin: 0 ;
     height: 100%;
     word-break: break-all;
-
-    background-color: green;
 }
 .header{
     position:fixed;
     top:0;
-    z-index:9;
+    z-index:11;
     width: 100%;
     height: 50px;
-    background-color: #000;
+    /*background-color: #424b5f;*/
+    background-color: #000000;
 }

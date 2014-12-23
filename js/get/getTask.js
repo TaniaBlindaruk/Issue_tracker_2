@@ -13,9 +13,9 @@ function getTasks(self) {
         success: function (response) {
             $(".data_refreshing_overlay").css('display', 'none');
             $("div .spinner").css('display', 'none');
-     
+
             if (response && response.results && response.results.length) {
-         
+
                 var mappedTasks = [];
                 for (var i = 0; i < response.results.length; i++) {
                     var a = response.results[i];
@@ -23,7 +23,7 @@ function getTasks(self) {
                     b.createdAt(a.createdAt);
                     b.updatedAt(a.updatedAt);
                     mappedTasks.push(b);
-               
+
                 }
                 console.log(mappedTasks);
                 self.arrayTask(mappedTasks);
@@ -33,7 +33,7 @@ function getTasks(self) {
         error: function () {
             $(".data_refreshing_overlay").css('display', 'none');
             $("div .spinner").css('display', 'none');
-          
+
         }
     };
     $.ajax(options);

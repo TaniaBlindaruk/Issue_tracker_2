@@ -1,10 +1,10 @@
 .edit_problem>*{
     display: block;
-    width: 70%;
+    width: 95%;
     background-color: RGBA(0,0,0,0.5);
     margin: 4px auto;
     border: none;
-    font-size:1.1em;
+   
     border-radius: 5px;
     resize: none;
     color: #ffffff;

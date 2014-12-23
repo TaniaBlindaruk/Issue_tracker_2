@@ -4,12 +4,12 @@
     background-color: RGBA(0,0,0,0.2);
     color: #ffffff;
     border: none;
-    font-size:1.1em;
+   
 }
 .add_new_status > button{
     width: 30%;
     background-color: RGBA(0,0,0,0.2);
     color: #ffffff;
     border-radius: 5px;
-    font-size:1.1em;
+  
 }

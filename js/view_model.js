@@ -42,6 +42,9 @@ function AppViewModel() {
     self.arrayTask = ko.observableArray([]);
     /*статус задачі*/
     self.task_status = ko.observable("");
+    self.this_status = ko.observable("");
+
+    self.arra = ko.observableArray(["111111wsqaedsaasd", 2, 3, 4]);
     /*спрацьовує при нажаті на заголовок типу таска, і змінює active_task*/
     getType(self);
     getStatus(self);
@@ -62,7 +65,7 @@ function AppViewModel() {
         if (self.tasks() != 0) {
 
             saveType(new Tasks(self.tasks()), this);
-            saveStatus(new Status(self.tasks(), "Not Started",1), this);
+            saveStatus(new Status(self.tasks(), "Not Started"), this);
             self.tasks("");
 
         }
@@ -94,8 +97,11 @@ function AppViewModel() {
 
             }
         }
-        saveStatus(new Status(self.active_tasks(), self.name_status(),1), this);
+        saveStatus(new Status(self.active_tasks(), self.name_status()), this);
         self.name_status("");
+    }
+    self.hello =function(status){
+        return status+"+Hello";
     }
     /*повертає вибірку статусів активного таску*/
     self.return_status_task = ko.computed(function () {
@@ -137,34 +143,63 @@ function AppViewModel() {
         }
         return result;
     });
+    /*тут ця переміна відповідає за те чи можна редагувати чи ні.... але вона не рообить =_=*/
+    self.trueEdit = ko.observable(true);
     /* видаляє задачу*/
     self.remove_task = function (seat) {
-        debugger;
         deleteTaskById(seat.id());
         self.arrayTask.remove(seat);
 
     }
     /*редагує
     * З.І: просто змінює стан self.boolTask = ko.observable(true);*/
+    self.last_status = ko.observable("");
     self.edit_task = function (seat) {
         if (seat.boolTask() == 0) {
             updateTask(seat, self);
-        }
+        };
+        debugger;
         seat.boolTask(!seat.boolTask());
+
+        self.trueEdit(false);
+
+
+    };
+    self.save_task = function (seat) {
+        if (seat.boolTask() == 0) {
+            updateTask(seat, self);
+        };
+        seat.boolTask(!seat.boolTask());
+        seat.task_status(self.last_status());
+        updateTask(seat,self);
+        debugger;
+        self.trueEdit(true);
+    };
+;
+
+    self.same_task = function (status) {
+        //debugger;
+        var result = [];
+        //debugger;
+        for (var i = 0; i < self.arrayTask().length; i++) {
+            if (self.arrayTask()[i].task_status() === status && self.arrayTask()[i].active_tasks() == self.active_tasks()) {
+                result.push(self.arrayTask()[i]);
+            }
+        }
+        return result;
     }
     /*видаляє тип задачу, параленьно з цим проходить по масиву статусів і видаляє всі статуси які були привязані до цього тпу задач
     * і видаляє задачі які були привязані до цього типу задач*/
-    self.delete_tasks = function () {
+    self.delete_tasks = function ()
+    {
 
         for (var i = 0; i < self.arrayTask().length; ++i) {
-            debugger;
             if (self.arrayTask()[i].active_tasks() == self.active_tasks()) {
                 deleteTaskById(self.arrayTask()[i].id());
                 self.arrayTask.remove(self.arrayTask()[i]);
                 --i;
             }
         }
-        debugger;
         for (var i = 0; i < self.arrayStatus().length; ++i) {
             if (self.arrayStatus()[i].active_tasks == self.active_tasks()) {
                 deleteStatusById(self.arrayStatus()[i].id);
@@ -172,7 +207,6 @@ function AppViewModel() {
                 --i;
             }
         }
-        debugger;
         for (var i = 0; i < self.arraTask().length; ++i) {
             if (self.arraTask()[i].tasks == self.active_tasks()) {
                 deleteTypeById(self.arraTask()[i].id);
@@ -180,6 +214,22 @@ function AppViewModel() {
                 break;
             }
         }
+
+        self.boolTypeTasks(false);
+    }
+    self.delete_status = function(seat){
+        debugger;
+        for (var i = 0; i < self.arrayTask().length; ++i) {
+            if (self.arrayTask()[i].task_status() == seat.name_status && self.arrayTask()[i].active_tasks()==self.active_tasks()) {
+                deleteTaskById(self.arrayTask()[i].id());
+                self.arrayTask.remove(self.arrayTask()[i]);
+                --i;
+            }
+        }
+
+                deleteStatusById(seat.id);
+                self.arrayStatus.remove(seat);
+
     }
 
 }
@@ -189,5 +239,23 @@ function AppViewModel() {
 $(document).ready(function () {
     //debugger;
     ko.applyBindings(new AppViewModel());
-
+    $(window).resize(function () {
+        $("#size").text($(window).width() + "  " + $(window).height());
+    });
+    $('#hide').on("click", function () {
+        var a = $('.add_task');
+        a.toggleClass("master1");
+        if (a.hasClass("master1"))
+            (a.animate(
+                {
+                    width: "toggle",
+                    height: "toggle"
+                }, 500))
+        else
+            (a.animate(
+                {
+                    width: "toggle",
+                    height: "toggle"
+                }, 500));
+    })
 });

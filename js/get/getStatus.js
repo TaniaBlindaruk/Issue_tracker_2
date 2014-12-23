@@ -32,7 +32,7 @@ function getStatus(self) {
         error: function () {
             $(".data_refreshing_overlay").css('display', 'none');
             $("div .spinner").css('display', 'none');
-       
+
         }
     };
     $.ajax(options);
